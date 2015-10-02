@@ -4,6 +4,7 @@
 # 3) downloads and extracts subversion
 # 4) downloads some files from sqlite
 # 5) compiles and installs subversion
+# Everything is installed in /usr/local
 if [ `whoami` != 'root' ]
   then
     echo "You must be root or use sudo to do this."
