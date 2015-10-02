@@ -1,4 +1,5 @@
 # !/usr/bin/env bash
+# libxext-dev is required on Ubuntu 10.04 otherwise the compilation of QQt fails
 if [ `whoami` != 'root' ]
   then
     echo "You must be root or use sudo to do this."
