@@ -1,5 +1,7 @@
 # !/usr/bin/env bash
-# libxext-dev is required on Ubuntu 10.04 otherwise the compilation of QQt fails
+# Updates distribution and installs necessary packages
+# libxext-dev is required on Ubuntu 10.04 otherwise the compilation of Qt fails
+# Installing cmake is required to configure openSSL
 if [ `whoami` != 'root' ]
   then
     echo "You must be root or use sudo to do this."
@@ -8,7 +10,7 @@ fi
 apt-get --yes update &&
 apt-get --yes  upgrade &&
 apt-get --yes  dist-upgrade &&
-apt-get --yes  install subversion git-core git-svn &&
+apt-get --yes  install git-core &&
 apt-get --yes  install make gcc g++ libX11-dev libXt-dev libgl1-mesa-dev libglu1-mesa-dev libfontconfig-dev libxrender-dev libncurses5-dev &&
 apt-get --yes  install cmake &&
 apt-get --yes  install libosmesa6-dev &&
