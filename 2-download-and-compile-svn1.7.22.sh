@@ -2,7 +2,8 @@
 # 1) downloads, compiles, and installs apr that is required to compile subversion
 # 2) downloads, compiles, and installs apr-util that is required to compile subversion
 # 3) downloads and extracts subversion
-# 4) compiles and installs subversion
+# 4) downloads some files from sqlite
+# 5) compiles and installs subversion
 # Everything is installed in /usr/local
 if [ `whoami` != 'root' ]
   then
@@ -30,10 +31,14 @@ cd apr-util-1.5.4
 ./configure --with-apr=/usr/local/apr/ &&
 make &&
 make install &&
-cd $base_dir
+cd $base_dir &&
+rm -rf sqlite-amalgamation-3071501
+wget http://www.sqlite.org/sqlite-amalgamation-3071501.zip &&
+unzip sqlite-amalgamation-3071501.zip &&
 rm -rf subversion-1.7.22*
 wget http://archive.apache.org/dist/subversion/subversion-1.7.22.tar.gz &&
 tar xvzf subversion-1.7.22.tar.gz &&
+cp -R sqlite-amalgamation-3071501 subversion-1.7.22/sqlite-amalgamation &&
 cd subversion-1.7.22 &&
 ./configure --with-apr=/usr/local/apr/ --with-apr-util=/usr/local/apr/ --with-neon &&
 make &&
