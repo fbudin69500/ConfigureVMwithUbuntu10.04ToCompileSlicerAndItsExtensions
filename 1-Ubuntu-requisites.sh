@@ -10,5 +10,5 @@ apt-get dist-upgrade &&
 apt-get install subversion git-core git-svn &&
 apt-get install make gcc g++ libX11-dev libXt-dev libgl1-mesa-dev libglu1-mesa-dev libfontconfig-dev libxrender-dev libncurses5-dev &&
 apt-get install cmake &&
-apt-get install libosmesa6-dev &&
+apt-get install libosmesa6-dev
 
