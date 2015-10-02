@@ -11,7 +11,8 @@ apt-get --yes  install subversion git-core git-svn &&
 apt-get --yes  install make gcc g++ libX11-dev libXt-dev libgl1-mesa-dev libglu1-mesa-dev libfontconfig-dev libxrender-dev libncurses5-dev &&
 apt-get --yes  install cmake &&
 apt-get --yes  install libosmesa6-dev &&
-apt-get --yes install libneon27-dev
+apt-get --yes install libneon27-dev &&
+apt-get --yes install libxext-dev
 echo "If on Virtual Box, update Guess Additions :"
 echo "Insert Guess Additions CD image"
 echo "In a terminal, run:"
