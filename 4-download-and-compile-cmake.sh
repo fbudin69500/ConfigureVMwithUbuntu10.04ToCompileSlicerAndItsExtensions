@@ -10,11 +10,6 @@ if [ `cmake -h` != 0 ]; then
   echo "e.g. sudo apt-get --yes install cmake"
   exit 1
 fi
-if [ `whoami` != 'root' ]
-  then
-    echo "You must be root or use sudo to do this."
-    exit
-fi
 if [ ! -d ~/Support ]; then
   mkdir ~/Support
 fi
@@ -26,7 +21,6 @@ wget https://gist.githubusercontent.com/jcfr/9513568/raw/21f4e4cabca5ad03435ecc1
 chmod u+x get-and-build-openssl-for-slicer.sh &&
 ./get-and-build-openssl-for-slicer.sh &&
 cd openssl-1.0.1e &&
-make install &&
 echo "Download and compile CMake" &&
 rm -rf cmake-3.3.2* &&
 wget https://cmake.org/files/v3.3/cmake-3.3.2.tar.gz --no-check-certificate &&
@@ -38,7 +32,6 @@ cd $base_dir &&
 echo "Configure and make cmake with openSSL support" &&
 libssl_dir=$base_dir/openssl-1.0.1e &&
 cd cmake-3.3.2 &&
-$base_dir/cmake-3.3.2-bootstrap/bin/cmake -DCMAKE_USE_OPENSSL:BOOL=ON -DOPENSSL_CRYPTO_LIBRARY:FILEPATH=$libssl_dir/libcrypto.so -DOPENSSL_INCLUDE_DIR:PATH=$libssl_dir/include -DOPENSSL_SSL_LIBRARY:FILEPATH=$libssl_dir/libssl.so &&
+$base_dir/cmake-3.3.2-bootstrap/bin/cmake -DCMAKE_USE_OPENSSL:BOOL=ON -DOPENSSL_CRYPTO_LIBRARY:FILEPATH=$libssl_dir/libcrypto.so -DOPENSSL_INCLUDE_DIR:PATH=$libssl_dir/include -DOPENSSL_SSL_LIBRARY:FILEPATH=$libssl_dir/libssl.so -DCMAKE_EXE_LINKER_FLAGS:STRING="-Wl,-rpath,$libssl_dir" &&
 make &&
-make install &&
 echo "Build cmake with openssl support - done"
