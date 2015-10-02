@@ -11,9 +11,9 @@ apt-get --yes  install subversion git-core git-svn &&
 apt-get --yes  install make gcc g++ libX11-dev libXt-dev libgl1-mesa-dev libglu1-mesa-dev libfontconfig-dev libxrender-dev libncurses5-dev &&
 apt-get --yes  install cmake &&
 apt-get --yes  install libosmesa6-dev
-echo "If on Virtual Box, update Guess Additions :
-  echo "Insert Guess Additions CD image"
-  echo "In a terminal, run:"
-  echo "cd /media/VBOXADDITONS_4.3.12_93733"
-  echo "sudo ./VBoxLinuxAdditionals.run"
-  echo "sudo reboot"
+echo "If on Virtual Box, update Guess Additions :"
+echo "Insert Guess Additions CD image"
+echo "In a terminal, run:"
+echo "cd /media/VBOXADDITONS_4.3.12_93733"
+echo "sudo ./VBoxLinuxAdditionals.run"
+echo "sudo reboot"
