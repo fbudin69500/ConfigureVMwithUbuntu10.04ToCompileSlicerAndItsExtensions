@@ -7,10 +7,10 @@ cd ~/Support   # This is where we will build Qt and dependent libraries
  
 # Keep track of our working directory
 cwd=$(pwd)
-
+sudo chown -R `whoami`:`whoami` .
 # This will download, then build zlib and openssl in the current folder
 rm -f get-and-build-openssl-for-slicer.sh
-wget https://gist.githubusercontent.com/jcfr/9513568/raw/21f4e4cabca5ad03435ecc17ab546dab5e2c1a2f/get-and-build-openssl-for-slicer.sh
+wget https://gist.githubusercontent.com/jcfr/9513568/raw/21f4e4cabca5ad03435ecc17ab546dab5e2c1a2f/get-and-build-openssl-for-slicer.sh --no-check-certificate
 chmod u+x get-and-build-openssl-for-slicer.sh 
 ./get-and-build-openssl-for-slicer.sh 
 
