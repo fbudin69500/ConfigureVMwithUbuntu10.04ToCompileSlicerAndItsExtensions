@@ -10,6 +10,10 @@ if [ `whoami` != 'root' ]
     echo "You must be root or use sudo to do this."
     exit
 fi
+if [ ! -d ~/Support ]; then
+  mkdir ~/Support
+fi
+cd ~/Support
 base_dir=$(pwd) &&
 rm -rf apr-1.5.2*
 wget http://mirror.cogentco.com/pub/apache/apr/apr-1.5.2.tar.gz &&

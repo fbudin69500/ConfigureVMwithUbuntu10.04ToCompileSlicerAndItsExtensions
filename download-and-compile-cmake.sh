@@ -10,6 +10,10 @@ if [ `cmake -h` != 0 ]; then
   echo "e.g. sudo apt-get --yes install cmake"
   exit 1
 fi
+if [ ! -d ~/Support ]; then
+  mkdir ~/Support
+fi
+cd ~/Support
 base_dir=$(pwd) &&
 echo "Download and compile zlib and openssl" &&
 rm -f get-and-build-openssl-for-slicer.sh &&
