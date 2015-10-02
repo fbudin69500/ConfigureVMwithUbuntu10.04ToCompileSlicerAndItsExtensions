@@ -5,22 +5,11 @@
 # See http://www.slicer.org/slicerWiki/index.php/Documentation/Nightly/Developers/Build_Instructions/Prerequisites#Ubuntu
 # To check that cmake has been compiled with openssl, run:
 # strings cmake | grep OPENSSL
-if [ `cmake -h` != 0 ]; then
-  echo "cmake is required. Install cmake before running this script."
-  echo "e.g. sudo apt-get --yes install cmake"
-  exit 1
-fi
 if [ ! -d ~/Support ]; then
   mkdir ~/Support
 fi
 cd ~/Support
 base_dir=$(pwd) &&
-echo "Download and compile zlib and openssl" &&
-rm -f get-and-build-openssl-for-slicer.sh &&
-wget https://gist.githubusercontent.com/jcfr/9513568/raw/21f4e4cabca5ad03435ecc17ab546dab5e2c1a2f/get-and-build-openssl-for-slicer.sh --no-check-certificate &&
-chmod u+x get-and-build-openssl-for-slicer.sh &&
-./get-and-build-openssl-for-slicer.sh &&
-cd openssl-1.0.1e &&
 echo "Download and compile CMake" &&
 rm -rf cmake-3.3.2* &&
 wget https://cmake.org/files/v3.3/cmake-3.3.2.tar.gz --no-check-certificate &&
@@ -29,6 +18,13 @@ cp -R cmake-3.3.2 cmake-3.3.2-bootstrap &&
 cd cmake-3.3.2-bootstrap &&
 ./configure && make &&
 cd $base_dir &&
+alias cmake=$base_dir/cmake-3.3.2-bootstrap/bin/cmake &&
+echo "Download and compile zlib and openssl" &&
+rm -f get-and-build-openssl-for-slicer.sh &&
+wget https://gist.githubusercontent.com/jcfr/9513568/raw/21f4e4cabca5ad03435ecc17ab546dab5e2c1a2f/get-and-build-openssl-for-slicer.sh --no-check-certificate &&
+chmod u+x get-and-build-openssl-for-slicer.sh &&
+./get-and-build-openssl-for-slicer.sh &&
+cd openssl-1.0.1e &&
 echo "Configure and make cmake with openSSL support" &&
 libssl_dir=$base_dir/openssl-1.0.1e &&
 cd cmake-3.3.2 &&
