@@ -5,7 +5,7 @@ then
 fi
 cwd=`pwd` &&
 cd ~/Slicer &&
-rm -r Slicer* &&
+rm -rf Slicer*
 svn checkout http://svn.slicer.org/Slicer4/trunk Slicer-trunk &&
 mkdir Slicer-trunk-build &&
 cd Slicer-trunk-build &&
