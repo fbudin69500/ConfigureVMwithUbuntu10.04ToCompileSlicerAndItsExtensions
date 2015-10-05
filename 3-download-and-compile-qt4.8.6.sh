@@ -15,6 +15,7 @@ chmod u+x get-and-build-openssl-for-slicer.sh
 ./get-and-build-openssl-for-slicer.sh 
 
 # This will download Qt source in the current folder
+rm -rf qt-everywhere-opensource-*
 wget http://packages.kitware.com/download/item/6175/qt-everywhere-opensource-src-4.8.6.tar.gz
 md5=`md5sum ./qt-everywhere-opensource-src-4.8.6.tar.gz | awk '{ print $1 }'` &&
 [ $md5 == "2edbe4d6c2eff33ef91732602f3518eb" ] || echo "MD5 mismatch. Problem downloading Qt"
